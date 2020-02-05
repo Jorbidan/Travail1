@@ -27,9 +27,9 @@ int main()
 
 void Jouer() 
 {
-
 }
 
 void InitialiserJoueurs()
 {
+
 }
