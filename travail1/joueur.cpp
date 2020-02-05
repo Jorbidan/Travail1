@@ -31,18 +31,9 @@ void Joueur::AjouterCarte(Carte* cartePige)
 
 void Joueur::ViderMainJoueur()
 {
-	bool mainVide = false;
-	int compteurCarte = 0;
-	while (mainVide == false)
-	{
-		if (mainDuJoueur[compteurCarte] == NULL)
-		{
-			mainVide = true;
-		}
-		else
-		{
-			mainDuJoueur[compteurCarte] = NULL;
-		}
-		compteurCarte += 1;
+	
+	for(int compteurCarte = 0; compteurCarte <maxCartesAJouer;compteurCarte++)
+	{	
+		mainDuJoueur[compteurCarte] = NULL;
 	}
 }
