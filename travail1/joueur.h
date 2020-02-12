@@ -20,5 +20,9 @@ public:
 	void ViderMainJoueur();
 	void AjouterDefaite(int nombreDefaites);
 	void AjouterVictoire(int nombreVictoires);
+	int GetDefaites();
+	int GetVictoires();
+	string GetNom();
+	Carte* GetMain(int quelCarte);
 };
 #endif

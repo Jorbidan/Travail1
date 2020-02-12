@@ -46,3 +46,20 @@ void Joueur::AjouterVictoire(int nombreVitoires)
 {
 	nombreVictoires++;
 }
+
+int Joueur::GetDefaites()
+{
+	return nombreDefaites;
+}
+int Joueur::GetVictoires()
+{
+	return nombreVictoires;
+}
+string Joueur::GetNom()
+{
+	return nom;
+}
+Carte* Joueur::GetMain(int quelCarte)
+{
+	return mainDuJoueur[quelCarte];
+}
