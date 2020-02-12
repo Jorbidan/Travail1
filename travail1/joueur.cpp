@@ -37,3 +37,12 @@ void Joueur::ViderMainJoueur()
 		mainDuJoueur[compteurCarte] = NULL;
 	}
 }
+void Joueur::AjouterDefaite(int nombreDefaites)
+{
+	nombreDefaites++;
+}
+
+void Joueur::AjouterVictoire(int nombreVitoires)
+{
+	nombreVictoires++;
+}

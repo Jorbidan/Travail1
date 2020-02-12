@@ -18,5 +18,7 @@ public:
 	void SetNomJoueur(string nomJoueur);
 	void AjouterCarte(Carte* cartePige);
 	void ViderMainJoueur();
+	void AjouterDefaite(int nombreDefaites);
+	void AjouterVictoire(int nombreVictoires);
 };
 #endif
