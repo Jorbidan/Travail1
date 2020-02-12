@@ -28,9 +28,8 @@ int main()
 		cin >> fini;
 		ClrScr();
 	}
-	ClrScr();
-	cout << "\n" << leJeu.joueur1.GetNom() << " a gagner " << leJeu.joueur1.GetVictoires() << " et en a perdu " << leJeu.joueur1.GetDefaites() << "\n";
-	cout << "\n" << leJeu.joueur2.GetNom() << " a gagner " << leJeu.joueur2.GetVictoires() << " et en a perdu " << leJeu.joueur2.GetDefaites() << "\n";
+	cout << leJeu.joueur1.GetNom() << " a gagner " << leJeu.joueur1.GetVictoires() << " fois et en a perdu " << leJeu.joueur1.GetDefaites() << " fois.\n";
+	cout << "\n" << leJeu.joueur2.GetNom() << " a gagner " << leJeu.joueur2.GetVictoires() << " fois et en a perdu " << leJeu.joueur2.GetDefaites() << " fois.\n\n\n";
 }
 
 void MelangerPaquet()
@@ -40,8 +39,8 @@ void MelangerPaquet()
 	Carte carteTempo;
 	for (int cpt = 0; cpt < 10000; cpt++)
 	{
-		carte1 = (rand() % 51);
-		carte2 = (rand() % 51);
+		carte1 = (rand() % 52);
+		carte2 = (rand() % 52);
 		carteTempo = leJeu.paquetCartes[carte1];
 		leJeu.paquetCartes[carte1] = leJeu.paquetCartes[carte2];
 		leJeu.paquetCartes[carte2] = carteTempo;
@@ -94,15 +93,15 @@ void TerminerPartie(int totalJoueur1, int totalJoueur2)
 	if (totalJoueur1 > totalJoueur2)
 	{
 		cout << leJeu.joueur1.GetNom() << " a gagne avec " << totalJoueur1 << " pts!";
-		leJeu.joueur1.AjouterVictoire(leJeu.joueur1.GetVictoires());
-		leJeu.joueur2.AjouterDefaite(leJeu.joueur2.GetDefaites());
+		leJeu.joueur1.AjouterVictoire();
+		leJeu.joueur2.AjouterDefaite();
 
 	}
 	else if (totalJoueur2 > totalJoueur1)
 	{
 		cout << leJeu.joueur2.GetNom() << " a gagne avec " << totalJoueur2 << " pts!";
-		leJeu.joueur2.AjouterVictoire(leJeu.joueur2.GetVictoires());
-		leJeu.joueur1.AjouterDefaite(leJeu.joueur1.GetDefaites());
+		leJeu.joueur2.AjouterVictoire();
+		leJeu.joueur1.AjouterDefaite();
 	}
 	else
 	{
