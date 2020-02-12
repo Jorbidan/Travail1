@@ -32,8 +32,8 @@ void MelangerPaquet()
 	Carte carteTempo;
 	for (int cpt = 0; cpt < 10000; cpt++)
 	{
-		carte1 = (rand() % 52) + 1;
-		carte2 = (rand() % 52) + 1;
+		carte1 = (rand() % 51);
+		carte2 = (rand() % 51);
 		carteTempo = leJeu.paquetCartes[carte1];
 		leJeu.paquetCartes[carte1] = leJeu.paquetCartes[carte2];
 		leJeu.paquetCartes[carte2] = carteTempo;
@@ -49,7 +49,11 @@ void Distribution()
 	{
 		distribution = maxCartesAJouer;
 	}
-	/*distribuer les cartes*/
+	for (int cpt = 0; cpt < distribution; cpt++)
+	{
+		leJeu.joueur1.AjouterCarte(&leJeu.paquetCartes[cpt]);
+		leJeu.joueur2.AjouterCarte(&leJeu.paquetCartes[maxCartes-1 - cpt]);
+	}
 }
 
 void Jouer() 

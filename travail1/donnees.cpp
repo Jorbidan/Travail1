@@ -10,7 +10,7 @@ Donnees::Donnees()
 void Donnees::initialiserPaquetCarte()
 {
 	int nombreCarteTotal = 0;
-	for (int atoutNum = 0; atoutNum < 4; atoutNum++)
+	for (int atoutNum = 0; atoutNum <= 3; atoutNum++)
 	{
 		string atout;
 		switch (atoutNum)
