@@ -43,16 +43,40 @@ void MelangerPaquet()
 void Distribution()
 {
 	int distribution;
-	cout << "combien de cartes voulez-vous distribué(max 26)?";
+	cout << "Combien de cartes voulez-vous distribué(max 26)?\n";
 	cin >> distribution;
 	if (distribution > maxCartesAJouer)
 	{
 		distribution = maxCartesAJouer;
+		cout << "Vous avez dépasser le max!";
 	}
+	cout << "Chaque joueur aura donc " << distribution << " cartes!\n";
 	for (int cpt = 0; cpt < distribution; cpt++)
 	{
-		leJeu.joueur1.AjouterCarte(&leJeu.paquetCartes[cpt]);
-		leJeu.joueur2.AjouterCarte(&leJeu.paquetCartes[maxCartes-1 - cpt]);
+		leJeu.joueur1.AjouterCarte(&leJeu.paquetCartes[cpt]); //cpt*2
+		leJeu.joueur2.AjouterCarte(&leJeu.paquetCartes[maxCartes-1 - cpt]); //cpt*2+1
+	}
+}
+void AfficherTotaux()
+{
+	cout <<"Les cartes de "<< leJeu.joueur1.GetNom()<<" sont :\n";
+	int cpt = 0;
+	int totalJoueur = 0;
+	Carte afficherCarte;
+	while (leJeu.joueur1.GetMain[cpt] == NULL)
+	{
+		afficherCarte =  leJeu.joueur1.GetMain[cpt];
+		cout << "le " << afficherCarte.GetValeur << " de " << afficherCarte.GetAtout;
+		totalJoueur += afficherCarte.GetValeur;
+		cpt += 1;
+	}
+	cpt = 0;
+	totalJoueur = 0;
+	while (leJeu.joueur2.GetMain[cpt] == NULL)
+	{
+		afficherCarte = leJeu.joueur2.GetMain[cpt];
+		cout << "le " << afficherCarte.GetValeur << " de " << afficherCarte.GetAtout;
+		cpt += 1;
 	}
 }
 
@@ -60,6 +84,8 @@ void Jouer()
 {
 	MelangerPaquet();
 	Distribution();
+	AfficherTotaux();
+	
 	
 }
 
