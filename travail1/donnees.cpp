@@ -4,7 +4,7 @@
 
 Donnees::Donnees()
 {
-	
+	initialiserPaquetCarte();
 }
 
 void Donnees::initialiserPaquetCarte()
