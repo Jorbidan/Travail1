@@ -13,8 +13,8 @@ void InitialiserJoueurs();
 void Jouer();
 void MelangerPaquet();
 void Distribution();
-int AfficherTotaux();
-void TerminerPartie();
+int AfficherTotaux(Joueur* joueurSelectionnee);
+void TerminerPartie(int totalJoueur1, int totalJoueur2);
 
 int main() 
 {
@@ -27,6 +27,8 @@ int main()
 		cout << "\nTermine (n/o) ? ";
 		cin >> fini;		
 	}
+	cout << "\n" << leJeu.joueur1.GetNom() << " a gagner " << leJeu.joueur1.GetVictoires() << " et a perdu " << leJeu.joueur1.GetDefaites() << "\n";
+	cout << "\n" << leJeu.joueur2.GetNom() << " a gagner " << leJeu.joueur2.GetVictoires() << " et a perdu " << leJeu.joueur2.GetDefaites() << "\n";
 }
 
 void MelangerPaquet()
@@ -115,7 +117,7 @@ void Jouer()
 void InitialiserJoueurs()
 {
 	string nom;
-	cout << "\nQuel est le nom du joueur 1?\n";
+	cout << "Quel est le nom du joueur 1?\n";
 	cin >> nom;
 	leJeu.joueur1.SetNomJoueur(nom);
 	cout << "\nQuel est le nom du joueur 2?\n";
