@@ -20,7 +20,7 @@ void Donnees::initialiserPaquetCarte()
 		case 1:
 			atout = "coeur"; break;
 		case 2:
-			atout = "trèfle"; break;
+			atout = "trefle"; break;
 		case 3:
 			atout = "carreau"; break;
 		}
