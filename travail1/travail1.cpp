@@ -30,7 +30,20 @@ void Jouer()
 
 }
 
+void initialiserNoms()
+{
+	string nom;
+	cout << "\nQuel est le nom du joueur 1?\n";
+	cin >> nom;
+	leJeu.joueur1.SetNomJoueur(nom);
+	cout << "\nQuel est le nom du joueur 2?\n";
+	cin >> nom;
+	leJeu.joueur2.SetNomJoueur(nom);
+}
+
 void InitialiserJoueurs()
 {
-	leJeu
+	initialiserNoms();
+
+
 }
