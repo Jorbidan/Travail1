@@ -47,7 +47,7 @@ void MelangerPaquet()
 void Distribution()
 {
 	int distribution;
-	cout << "Combien de cartes voulez-vous distribué(max 26)?\n";
+	cout << "Combien de cartes voulez-vous distribue(max 26)?\n";
 	cin >> distribution;
 	if (distribution > maxCartesAJouer)
 	{
@@ -57,22 +57,22 @@ void Distribution()
 	cout << "Chaque joueur aura donc " << distribution << " cartes!";
 	for (int cpt = 0; cpt < distribution; cpt++)
 	{
-		leJeu.joueur1.AjouterCarte(&leJeu.paquetCartes[cpt]); //cpt*2
-		leJeu.joueur2.AjouterCarte(&leJeu.paquetCartes[maxCartes-1 - cpt]); //cpt*2+1
+		leJeu.joueur1.AjouterCarte(&leJeu.paquetCartes[cpt]);
+		leJeu.joueur2.AjouterCarte(&leJeu.paquetCartes[maxCartes-1 - cpt]);
 	}
 }
 
-int AfficherTotaux(Joueur joueurSelectionnee)
+int AfficherTotaux(Joueur* joueurSelectionnee)
 {
-	cout <<"\nLes cartes de "<< joueurSelectionnee.GetNom()<<" sont :";
+	cout <<"\nLes cartes de "<< joueurSelectionnee->GetNom()<<" sont :";
 	int cpt = 0;
 	int totalJoueur = 0;
-	Carte afficherCarte;
-	while (joueurSelectionnee.GetMain[cpt] == NULL)
+	Carte* afficherCarte;
+	while (joueurSelectionnee->GetMain(cpt) == NULL)
 	{
-		afficherCarte = joueurSelectionnee.GetMain[cpt];
-		cout << "\nle " << afficherCarte.GetValeur << " de " << afficherCarte.GetAtout;
-		totalJoueur += afficherCarte.GetValeur;
+		afficherCarte = joueurSelectionnee->GetMain(cpt);
+		cout << "\nle " << afficherCarte->GetValeur() << " de " << afficherCarte->GetAtout();
+		totalJoueur += afficherCarte->GetValeur();
 		cpt += 1;
 	}
 	cout << "\nTotal de pts: " << totalJoueur;
@@ -83,32 +83,32 @@ void TerminerPartie(int totalJoueur1, int totalJoueur2)
 {
 	if (totalJoueur1 > totalJoueur2)
 	{
-		cout <<"\n"<< leJeu.joueur1.GetNom << " à gagné avec " << totalJoueur1 << " pts!";
-		leJeu.joueur1.AjouterVictoire;
-		leJeu.joueur2.AjouterDefaite;
+		cout <<"\n"<< leJeu.joueur1.GetNom() << " à gagne avec " << totalJoueur1 << " pts!";
+		leJeu.joueur1.AjouterVictoire(leJeu.joueur1.GetVictoires());
+		leJeu.joueur2.AjouterDefaite(leJeu.joueur2.GetDefaites());
 
 	}
 	else if (totalJoueur1 > totalJoueur2)
 	{
-		cout << "\n" << leJeu.joueur2.GetNom << " à gagné avec " << totalJoueur2 << " pts!";
-		leJeu.joueur2.AjouterVictoire;
-		leJeu.joueur1.AjouterDefaite;
+		cout << "\n" << leJeu.joueur2.GetNom() << " à gagne avec " << totalJoueur2 << " pts!";
+		leJeu.joueur2.AjouterVictoire(leJeu.joueur2.GetVictoires());
+		leJeu.joueur1.AjouterDefaite(leJeu.joueur1.GetDefaites());
 	}
 	else
 	{
 		cout << "\nLa partie est nule avec un total de " << totalJoueur1 << " pts...";
 
 	}
-	leJeu.joueur1.ViderMainJoueur;
-	leJeu.joueur2.ViderMainJoueur;
+	leJeu.joueur1.ViderMainJoueur();
+	leJeu.joueur2.ViderMainJoueur();
 }
 
 void Jouer() 
 {
 	MelangerPaquet();
 	Distribution();
-	int totalJoueur1 = AfficherTotaux(leJeu.joueur1);
-	int totalJoueur2 = AfficherTotaux(leJeu.joueur2);
+	int totalJoueur1 = AfficherTotaux(&leJeu.joueur1);
+	int totalJoueur2 = AfficherTotaux(&leJeu.joueur2);
 	TerminerPartie(totalJoueur1, totalJoueur2);	
 }
 

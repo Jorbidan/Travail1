@@ -18,7 +18,7 @@ void Joueur::AjouterCarte(Carte* cartePige)
 {
 	bool cartePlace = false;
 	int compteurCarte = 0;
-	while (cartePlace == false /*&& compteurCarte <= maxCartesAJouer*/)
+	while (cartePlace == false)
 	{
 		if (mainDuJoueur[compteurCarte] == NULL)
 		{
